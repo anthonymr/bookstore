@@ -3,7 +3,7 @@ import React from 'react';
 function CategoriesRoute() {
   return (
     <section>
-      Categories
+      <button type="button">Check status</button>
     </section>
   );
 }
