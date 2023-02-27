@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import Button from './Button';
 
-function Book({ title, author }) {
+function Book({ title, author, id }) {
   return (
     <article>
       <h3>{title}</h3>
       <p>{author}</p>
-      <button type="button">Remove</button>
+      <Button type="remove" id={id} />
     </article>
   );
 }
@@ -13,6 +14,7 @@ function Book({ title, author }) {
 Book.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Book;
