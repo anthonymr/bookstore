@@ -3,26 +3,7 @@ import axios from 'axios';
 import key from '../../key';
 
 const initialState = {
-  books: [
-    {
-      item_id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  books: [],
   newTitle: '',
   newAuthor: '',
   isLoading: false,
@@ -58,13 +39,6 @@ const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    removeBook: (state, { payload }) => {
-      const removeId = payload;
-      return {
-        ...state,
-        books: state.books.filter((book) => book.item_id !== removeId),
-      };
-    },
     setNewTitle(state, { payload }) {
       return {
         ...state,
@@ -92,6 +66,11 @@ const booksSlice = createSlice({
         );
       }
 
+      newBooks.sort((a, b) => {
+        if (a.item_id > b.item_id) return 1;
+        if (b.item_id > a.item_id) return -1;
+        return 0;
+      });
       return { ...state, books: newBooks };
     });
   },
