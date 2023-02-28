@@ -25,6 +25,7 @@ const initialState = {
   ],
   newTitle: '',
   newAuthor: '',
+  isLoading: false,
 };
 
 const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
@@ -37,13 +38,26 @@ export const getBooks = createAsyncThunk(
   },
 );
 
+export const addBook = createAsyncThunk(
+  'books/addBook',
+  (newBook) => {
+    const endPoint = `/apps/${key}/books`;
+    return axios.post(`${baseUrl}${endPoint}`, { ...newBook });
+  },
+);
+
+export const removeBook = createAsyncThunk(
+  'books/removeBook',
+  (id) => {
+    const endPoint = `/apps/${key}/books/${id}`;
+    return axios.delete(`${baseUrl}${endPoint}`);
+  },
+);
+
 const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    addBook: (state, { payload }) => {
-      state.books.push(payload);
-    },
     removeBook: (state, { payload }) => {
       const removeId = payload;
       return {
@@ -64,15 +78,24 @@ const booksSlice = createSlice({
       };
     },
   },
-  extraReducers: {
-    [getBooks.fulfilled]: (state, action) => {
-      console.log(action);
-      return { ...state, books: action.payload };
-    },
+  extraReducers: (builder) => {
+    builder.addCase(addBook.pending, (state) => ({ ...state, isLoading: true }));
+    builder.addCase(addBook.fulfilled, (state) => ({ ...state, isLoading: false }));
+    builder.addCase(removeBook.pending, (state) => ({ ...state, isLoading: true }));
+    builder.addCase(removeBook.fulfilled, (state) => ({ ...state, isLoading: false }));
+    builder.addCase(getBooks.fulfilled, (state, { payload }) => {
+      let newBooks = [];
+
+      if (payload.data !== '') {
+        newBooks = Object.entries(payload.data).map(
+          (book) => ({ ...book[1][0], item_id: book[0] }),
+        );
+      }
+
+      return { ...state, books: newBooks };
+    });
   },
 });
 
-export const {
-  addBook, removeBook, setNewTitle, setNewAuthor,
-} = booksSlice.actions;
+export const { setNewTitle, setNewAuthor } = booksSlice.actions;
 export default booksSlice.reducer;
