@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import key from '../../key';
 
 const initialState = {
   books: [
@@ -25,6 +27,16 @@ const initialState = {
   newAuthor: '',
 };
 
+const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+
+export const getBooks = createAsyncThunk(
+  'books/getBooks',
+  () => {
+    const endPoint = `/apps/${key}/books`;
+    return axios.get(`${baseUrl}${endPoint}`);
+  },
+);
+
 const booksSlice = createSlice({
   name: 'books',
   initialState,
@@ -50,6 +62,12 @@ const booksSlice = createSlice({
         ...state,
         newAuthor: payload,
       };
+    },
+  },
+  extraReducers: {
+    [getBooks.fulfilled]: (state, action) => {
+      console.log(action);
+      return { ...state, books: action.payload };
     },
   },
 });
