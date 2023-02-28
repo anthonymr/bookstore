@@ -20,7 +20,7 @@ function Button({
           item_id: uniqid(),
           title: newTitle,
           author: newAuthor,
-          category,
+          category: category || '',
         }));
         break;
       case 'remove':
