@@ -1,0 +1,16 @@
+.container {
+  padding: 4%;
+}
+
+.primary-button {
+  cursor: pointer;
+  border: none;
+  background-color: #0290ff;
+  border-radius: 3px;
+  padding: 8px 24px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: #fff;
+  margin-top: 10px;
+}

@@ -1,0 +1,57 @@
+.container {
+  padding: 0 4%;
+}
+
+.horizontal-divider {
+  height: 0.125rem;
+  background-color: #e8e8e8;
+  width: 100%;
+  margin: 2.5rem 0 1.813rem;
+}
+
+.form-title,
+.input {
+  font-family: "Montserrat", sans-serif;
+}
+
+.form-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.18px;
+  color: #888;
+}
+
+.add-form {
+  margin-top: 20px;
+  display: flex;
+  grid-gap: 32px;
+  gap: 32px;
+}
+
+.title-input {
+  width: calc(50% - 25px);
+}
+
+.input {
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+  font-size: 1rem;
+  letter-spacing: -0.15px;
+  color: #121212;
+}
+
+.primary-button-big {
+  cursor: pointer;
+  width: 20%;
+  padding: 12px;
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: none;
+  letter-spacing: 0.5px;
+  color: #fff;
+  font-size: 0.813rem;
+  font-weight: 700;
+  font-family: "Roboto Slab", serif;
+}
