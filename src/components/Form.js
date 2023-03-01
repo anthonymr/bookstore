@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setNewTitle, setNewAuthor } from '../redux/books/booksSlice';
 import Button from './Button';
+import styles from '../styles/Form.module.css';
 
 function Form() {
   const dispatch = useDispatch();
@@ -12,11 +13,15 @@ function Form() {
   const handleAuthorChange = (event) => dispatch(setNewAuthor(event.target.value));
 
   return (
-    <form>
-      <input type="text" placeholder="title" onChange={handleTitleChange} value={newTitle} />
-      <input type="text" placeholder="author" onChange={handleAuthorChange} value={newAuthor} />
-      <Button type="add" />
-    </form>
+    <section className={styles.container}>
+      <div className={styles['horizontal-divider']} />
+      <h2 className={styles['form-title']}>ADD NEW BOOK</h2>
+      <form className={styles['add-form']}>
+        <input className={`${styles.input} ${styles['title-input']}`} type="text" placeholder="title" onChange={handleTitleChange} value={newTitle} />
+        <input className={`${styles.input} ${styles['title-input']}`} type="text" placeholder="author" onChange={handleAuthorChange} value={newAuthor} />
+        <Button className={styles['primary-button-big']} type="add" />
+      </form>
+    </section>
   );
 }
 
