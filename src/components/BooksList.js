@@ -1,15 +1,20 @@
 import { useSelector } from 'react-redux';
 import Book from './Book';
+import styles from '../styles/BooksList.module.css';
 
 function BookList() {
   const { books } = useSelector((state) => state.books);
   return (
-    <section>
-      {
-            books.map((book) => (
-              <Book key={book.item_id} id={book.item_id} author={book.author} title={book.title} />
-            ))
-        }
+    <section className={styles.container}>
+      <ul className={styles.books}>
+        {
+              books.map((book) => (
+                <li key={book.item_id}>
+                  <Book id={book.item_id} author={book.author} title={book.title} />
+                </li>
+              ))
+          }
+      </ul>
     </section>
   );
 }
