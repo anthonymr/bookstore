@@ -7,7 +7,7 @@ import {
 import { filterCategories } from '../redux/categories/categoriesSlice';
 
 function Button({
-  type, id, category,
+  type, id, category, className,
 }) {
   const dispatch = useDispatch();
 
@@ -38,7 +38,7 @@ function Button({
   };
 
   return (
-    <button type="button" onClick={clickHandle}>
+    <button className={className} type="button" onClick={clickHandle}>
       {type}
       <span> book</span>
     </button>
@@ -49,11 +49,13 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string,
   category: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {
   category: '',
   id: '',
+  className: '',
 };
 
 export default Button;
