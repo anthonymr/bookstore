@@ -21,7 +21,6 @@ function App() {
 
   return (
     <main className={styles['Bookstore-CMS']}>
-      <div className={styles.shadow} />
       <div className={styles['panel-bg']}>
         <Navbar />
         <div className={styles.Line} />
