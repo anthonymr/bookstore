@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.Bookstore-CMS {
+  padding: 9.313rem 3.75rem 7.688rem 6.25rem;
+  background-color: var(--pale-grey);
+}
+
+.panel-bg {
+  height: 68.563rem;
+  margin: 0 2.5rem 4.063rem 0;
+  padding: 0 0 49.625rem;
+  border-radius: 4px;
+  box-shadow: 0 0 60px 0 var(--black-5);
+  background-color: var(--z);
+  position: relative;
+  z-index: 20;
+}
+
+.Line {
+  height: 0.125rem;
+  border: solid 1px var(--white);
+}
+
+.shadow {
+  width: 85.063rem;
+  height: 63.313rem;
+  margin: 9.313rem 0 0 4.938rem;
+  padding: 10.563rem 8.688rem 20.625rem 1.313rem;
+  opacity: 0.2;
+  border-radius: 4px;
+  -webkit-filter: blur(50px);
+  filter: blur(50px);
+  background-color: #000;
+  position: absolute;
+  top: 150px;
+}
