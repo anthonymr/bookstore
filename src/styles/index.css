@@ -1,0 +1,9 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700&family=Roboto+Slab:wght@300;400;500;700&display=swap);
+
+:root {
+  --pale-grey: #f5f6fa;
+  --z: #fafafa;
+  --white: #e8e8e8;
+  --black-5: rgba(0, 0, 0, 0.05);
+  --black-two: #121212;
+}
